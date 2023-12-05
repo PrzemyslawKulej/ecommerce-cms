@@ -6,6 +6,7 @@ import type { Metadata } from "next";
 import { ModalProvider } from "@/providers/modal-provider";
 
 import "./globals.css";
+import prismadb from "@/lib/prismadb";
 
 const inter = Inter({ subsets: ["latin"] });
 
