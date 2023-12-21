@@ -49,12 +49,12 @@ export const BillboardForm: React.FC<BillboardFormProps> = ({
   const [open, setOpen] = useState(false);
   const [loading, setLoading] = useState(false);
 
-  const title = initialData ? "Edytuj billboard" : "Stwórz billboard";
-  const description = initialData ? "Edytuj billboard" : "Dodaj nowy billboard";
+  const title = initialData ? "Edit billboard" : "Create billboard";
+  const description = initialData ? "Edit a billboard" : "Add new billboard";
   const toastMessage = initialData
-    ? "Billboard zaaktualizowany."
-    : "Billboard stworzon.";
-  const action = initialData ? "Zapisz zmiany" : "Stwórz";
+    ? "Billboard updated."
+    : "Billboard created.";
+  const action = initialData ? "Save changes" : "Create";
 
   const form = useForm<BillboardFormValues>({
     resolver: zodResolver(formSchema),
@@ -67,13 +67,13 @@ export const BillboardForm: React.FC<BillboardFormProps> = ({
   const onSubmit = async (data: BillboardFormValues) => {
     try {
       setLoading(true);
-      if (!initialData) {
-        await axios.post(
-          `/api/${params.storeId}/billboards/${params.bilboardId}`,
+      if (initialData) {
+        await axios.patch(
+          `/api/${params.storeId}/billboards/${params.billboardId}`,
           data
         );
       } else {
-        await axios.patch(`/api/${params.storeId}/billboards`, data);
+        await axios.post(`/api/${params.storeId}/billboards`, data);
       }
       router.refresh();
       toast.success(toastMessage);
