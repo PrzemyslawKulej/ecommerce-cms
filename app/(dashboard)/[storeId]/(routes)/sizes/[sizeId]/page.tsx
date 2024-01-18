@@ -1,10 +1,10 @@
 import prismadb from "@/lib/prismadb";
-import React from "react";
-import { BillboardForm } from "./components/size-form";
+
+import { SizeForm } from "./components/size-form";
 
 const SizePage = async ({ params }: { params: { sizeId: string } }) => {
   const size =
-    (await prisma?.size.findUnique({
+    (await prismadb.size.findUnique({
       where: {
         id: params.sizeId,
       },
@@ -13,7 +13,7 @@ const SizePage = async ({ params }: { params: { sizeId: string } }) => {
   return (
     <div className="flex-col">
       <div className="flex-1 space-y-4 p-8">
-        <BillboardForm initialData={size} />
+        <SizeForm initialData={size} />
       </div>
     </div>
   );

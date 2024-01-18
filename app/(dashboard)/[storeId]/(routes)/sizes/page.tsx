@@ -1,6 +1,5 @@
 import { format } from "date-fns";
 
-import React from "react";
 import prismadb from "@/lib/prismadb";
 
 import { SizesClient } from "./components/client";
