@@ -6,7 +6,8 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "postinstall": "prisma generate"
   },
   "dependencies": {
     "@clerk/nextjs": "^4.27.2",
@@ -30,10 +31,12 @@
     "next": "14.0.3",
     "next-auth": "^4.24.5",
     "next-cloudinary": "^5.13.0",
+    "next-themes": "^0.2.1",
     "react": "^18",
     "react-dom": "^18",
     "react-hook-form": "^7.48.2",
     "react-hot-toast": "^2.4.1",
+    "recharts": "^2.11.0",
     "stripe": "^14.14.0",
     "tailwind-merge": "^2.0.0",
     "tailwindcss-animate": "^1.0.7",

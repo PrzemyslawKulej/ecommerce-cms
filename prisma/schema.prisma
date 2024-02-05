@@ -82,7 +82,7 @@ model Color {
 model Product {
   id String @id @default(uuid())
   storeId String
-  store Store @relation("StoreToProduct", fields: [storeId], references: [id])
+  store Store @relation("StoreToProduct", fields: [storeId], references: [id], onDelete: Cascade)
   categoryId String
   category Category @relation("CategoryToProduct", fields: [categoryId], references: [id])
   name String
@@ -118,7 +118,7 @@ model Image {
 model Order {
   id String @id @default(uuid())
   storeId String
-  store Store @relation("StoreToOrder", fields: [storeId], references: [id])
+  store Store @relation("StoreToOrder", fields: [storeId], references: [id], onDelete: Cascade)
   orderItems OrderItem[]
   isPaid Boolean @default(false)
   phone String @default("")
@@ -135,7 +135,7 @@ model OrderItem {
   orderId String 
   order Order @relation(fields: [orderId], references: [id])
   productId String
-  product Product @relation(fields: [productId], references: [id])
+  product Product @relation(fields: [productId], references: [id], onDelete: Cascade)
 
   @@index([orderId])
   @@index([productId])
